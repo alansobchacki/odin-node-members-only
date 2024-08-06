@@ -1,4 +1,5 @@
 const express = require("express");
+const bcrypt = require("bcryptjs");
 const router = express.Router();
 const db = require("../db/queries");
 
@@ -17,13 +18,13 @@ router.post("/", async function (req, res, next) {
     const email = req.body.email;
     const membership = "not_a_member"; // users are not members after sign-up
 
-    console.log(userName);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     await db.addNewUser(
       firstName,
       lastName,
       userName,
-      password,
+      hashedPassword,
       email,
       membership
     );

@@ -6,6 +6,7 @@ const logger = require("morgan");
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
+const bcrypt = require("bcryptjs");
 const pool = require("./db/pool");
 
 const indexRouter = require("./routes/index");
