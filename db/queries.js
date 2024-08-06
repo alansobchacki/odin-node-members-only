@@ -10,19 +10,20 @@ async function addNewUser(
   firstName,
   lastName,
   userName,
+  password,
   email,
-  membership = "not_a_member" // users are not members on initial sign-up, hence the default value
+  membership
 ) {
   const membershipQuery = await pool.query(
-    "SELECT id FROM membership WHERE status = $5",
+    "SELECT id FROM membership WHERE status = $1",
     [membership]
   );
 
   const membershipId = membershipQuery.rows[0].id;
 
   await pool.query(
-    "INSERT INTO users (first_name, last_name, username, email) VALUES ($1, $2, $3, $4, $5)",
-    [firstName, lastName, userName, email, membershipId]
+    "INSERT INTO users (first_name, last_name, username, password, email, membership_id) VALUES ($1, $2, $3, $4, $5, $6)",
+    [firstName, lastName, userName, password, email, membershipId]
   );
 }
 

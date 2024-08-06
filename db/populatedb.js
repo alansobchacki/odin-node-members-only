@@ -16,16 +16,18 @@ CREATE TABLE IF NOT EXISTS users (
   first_name VARCHAR ( 35 ) NOT NULL,
   last_name VARCHAR ( 35 ) NOT NULL,
   username VARCHAR ( 35 ) NOT NULL UNIQUE,
+  password VARCHAR ( 100 ) NOT NULL,
   email VARCHAR ( 100 ) NOT NULL UNIQUE,
   membership_id INTEGER REFERENCES membership(id),
   CONSTRAINT unique_username_email UNIQUE (username, email)
 );
 
-INSERT INTO users (first_name, last_name, username, email, membership_id) 
+INSERT INTO users (first_name, last_name, username, password, email, membership_id) 
 VALUES (
   'John', 
   'Wick', 
-  'johnwick29', 
+  'johnwick29',
+  '1234', 
   'johnwick@gmail.com', 
   (SELECT id FROM membership WHERE status = 'member')
 )
