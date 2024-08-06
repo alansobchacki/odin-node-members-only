@@ -17,7 +17,8 @@ CREATE TABLE IF NOT EXISTS users (
   last_name VARCHAR ( 35 ) NOT NULL,
   username VARCHAR ( 35 ) NOT NULL UNIQUE,
   email VARCHAR ( 100 ) NOT NULL UNIQUE,
-  membership_id INTEGER REFERENCES membership(id)
+  membership_id INTEGER REFERENCES membership(id),
+  CONSTRAINT unique_username_email UNIQUE (username, email)
 );
 
 INSERT INTO users (first_name, last_name, username, email, membership_id) 
