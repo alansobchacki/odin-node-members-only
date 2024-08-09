@@ -18,11 +18,13 @@ router.patch("/", async function (req, res, next) {
     const username = req.body.username;
     const answer = req.body.answer.toUpperCase();
 
-    if (answer === process.env.RIDDLE_PASSWORD) {
+    if (answer === process.env.RIDDLE_PASSWORD)
       await db.changeUserMembership(username, "member");
-      console.log("changing membership...");
-      res.redirect("/");
-    }
+
+    if (answer === process.env.RIDDLE_ADMIN_PASSWORD)
+      await db.changeUserMembership(username, "admin");
+
+    res.redirect("/");
   } catch (err) {
     return next(err);
   }

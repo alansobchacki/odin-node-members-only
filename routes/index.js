@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../db/queries");
 
-/* GET log-in page. */
+/* GET home page. */
 router.get("/", async function (req, res, next) {
   try {
     const messages = await db.getAllMessagesWithUsers();
