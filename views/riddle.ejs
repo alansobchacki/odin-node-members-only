@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="riddle-main-container">
+      <% if (user) { %>
+      <p>Answer this, and improve your membership status.</p>
+      <p>
+        "I am not alive, but I grow; I don't have lungs, yet I need air; I have
+        no mouth, and I can drown. What am I?"
+      </p>
+
+      <form method="POST" action="/riddle?_method=PATCH">
+        <input type="hidden" name="username" value="<%= user.username %>" />
+
+        <label for="answer">Your answer:</label>
+        <input
+          id="answer"
+          name="answer"
+          type="text"
+          placeholder="..."
+          required
+        />
+        <button type="submit">Submit</button>
+      </form>
+
+      <p>Click <a href="/">here</a> to return.</p>
+
+      <% } else { %>
+      <p>
+        You're not logged in. To view this page, please <a href="/">log in.</a>
+      </p>
+      <% } %>
+    </div>
+  </body>
+</html>

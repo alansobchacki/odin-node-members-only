@@ -4,6 +4,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const session = require("express-session");
+const methodOverride = require("method-override");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
@@ -11,6 +12,7 @@ const pool = require("./db/pool");
 
 const indexRouter = require("./routes/index");
 const signupRouter = require("./routes/sign-up");
+const riddleRouter = require("./routes/riddle");
 
 const app = express();
 
@@ -25,10 +27,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(session({ secret: "cats", resave: false, saveUninitialized: false }));
 app.use(passport.session());
+app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/", indexRouter);
 app.use("/sign-up", signupRouter);
+app.use("/riddle", riddleRouter);
 
 // Handles our log-in / log-out logic
 passport.use(
