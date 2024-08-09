@@ -69,6 +69,17 @@ async function deleteMessage(messageId) {
   await pool.query("DELETE FROM messages WHERE id = $1", [messageId]);
 }
 
+// performs a read-only query to help build an array where each message holds its username value
+async function getAllMessagesWithUsers() {
+  const { rows } = await pool.query(`
+    SELECT messages.id, messages.content, messages.created_at, users.username 
+    FROM messages
+    JOIN users ON messages.user_id = users.id
+    ORDER BY messages.created_at DESC
+  `);
+  return rows;
+}
+
 module.exports = {
   getAllUsers,
   addNewUser,
@@ -76,4 +87,5 @@ module.exports = {
   getAllMessages,
   addNewMessage,
   deleteMessage,
+  getAllMessagesWithUsers,
 };

@@ -4,7 +4,7 @@ const router = express.Router();
 const db = require("../db/queries");
 
 /* GET sign-up form page */
-router.get("/", function (req, res, next) {
+router.get("/", function (req, res) {
   res.render("sign-up-form");
 });
 
