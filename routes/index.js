@@ -26,4 +26,16 @@ router.post("/", async function (req, res, next) {
   }
 });
 
+/* DELETE message */
+router.delete("/messages/:id", async function (req, res, next) {
+  try {
+    const messageId = req.params.id;
+
+    await db.deleteMessage(messageId);
+    res.redirect("/");
+  } catch (err) {
+    return next(err);
+  }
+});
+
 module.exports = router;

@@ -69,8 +69,22 @@
           <p>posted by <%= message.username %> on <%= message.created_at %></p>
           <% } else { %>
           <p>posted by ? on</p>
-          <% } %> <% }); %>
+          <% } %> <% if (user && user.membership_id === 3) { %>
+          <form
+            action="/messages/<%= message.id %>?_method=DELETE"
+            method="POST"
+            style="display: inline"
+          >
+            <button
+              type="submit"
+              style="border: none; background: none; cursor: pointer"
+            >
+              🗑️
+            </button>
+          </form>
+          <% } %>
         </div>
+        <% }); %>
       </div>
     </div>
   </body>
