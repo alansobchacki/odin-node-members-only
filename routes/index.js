@@ -13,4 +13,17 @@ router.get("/", async function (req, res, next) {
   }
 });
 
+/* POST new message */
+router.post("/", async function (req, res, next) {
+  try {
+    const username = req.body.username;
+    const message = req.body.message;
+
+    await db.addNewMessage(username, message);
+    res.redirect("/");
+  } catch (err) {
+    return next(err);
+  }
+});
+
 module.exports = router;

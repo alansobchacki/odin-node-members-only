@@ -7,10 +7,11 @@
   <body>
     <div id="index-main-container">
       <div id="login-form">
-        <% if (user) {%>
-        <h1>WELCOME <%= user.username %></h1>
+        <% if (user) { %>
+        <h1>Welcome, <%= user.username %></h1>
 
-        <% if (user.membership_id < 2) { %>
+        <% if (user.membership_id === 1) { %>
+
         <p>Thank you for signing up!</p>
         <p>
           You're now an initiate member. You're still not allowed to write
@@ -18,11 +19,28 @@
         </p>
         <p>To increase your membership level, you have to prove your worth.</p>
         <a href="/riddle">Click here to prove you're a worthy member</a>
-        <% } %>
 
-        <a href="/log-out">LOG OUT</a>
+        <p>Click <a href="/log-out">here</a> to logout.</p>
+        <% } else if (user.membership_id >= 2) { %>
 
-        <% } else { %>
+        <p>Want to leave a message?</p>
+
+        <form action="/" method="POST">
+          <input type="hidden" name="username" value="<%= user.username %>" />
+
+          <label for="message">Your message here</label>
+          <input
+            id="message"
+            name="message"
+            placeholder="Your message here..."
+            type="text"
+          />
+          <button>Send Message</button>
+        </form>
+
+        <p>Click <a href="/log-out">here</a> to logout.</p>
+        <% } %> <% } else { %>
+
         <h1>Please log in</h1>
 
         <form action="/log-in" method="POST">
@@ -50,7 +68,7 @@
           <% if (user && user.membership_id >= 2) { %>
           <p>posted by <%= message.username %> on <%= message.created_at %></p>
           <% } else { %>
-          <p>posted by: ??</p>
+          <p>posted by ? on</p>
           <% } %> <% }); %>
         </div>
       </div>
