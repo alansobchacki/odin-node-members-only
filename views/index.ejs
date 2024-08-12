@@ -2,11 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/index.css" />
     <title></title>
   </head>
   <body>
     <div id="index-main-container">
-      <div id="login-form">
+      <div id="right-container">
         <% if (user) { %>
         <h1>Welcome, <%= user.username %></h1>
 
@@ -41,27 +42,35 @@
         <p>Click <a href="/log-out">here</a> to logout.</p>
         <% } %> <% } else { %>
 
-        <h1>Please log in</h1>
+        <h1>Curious to see who posted what?</h1>
+        <h2>Sign in and find out.</h2>
 
         <form action="/log-in" method="POST">
-          <label for="username">Username</label>
-          <input
-            id="username"
-            name="username"
-            placeholder="username"
-            type="text"
-          />
-          <label for="password">Password</label>
-          <input id="password" name="password" type="password" />
-          <button>Log In</button>
+          <div id="login-form">
+            <input
+              id="username"
+              name="username"
+              placeholder="Type your username"
+              type="text"
+            />
+            <input
+              id="password"
+              name="password"
+              placeholder="Type your password"
+              type="password"
+            />
+            <button id="login-button">Log In</button>
+          </div>
         </form>
 
-        <p>Don't have an account?</p>
-        <a href="/sign-up">Create one</a>
+        <p>
+          Don't have an account? Click <a href="/sign-up">here</a> to create
+          one.
+        </p>
         <% } %>
       </div>
 
-      <div id="messages">
+      <div id="left-container">
         <% messages.forEach(function(message) { %>
         <div class="message-box">
           <p><%= message.content %></p>
