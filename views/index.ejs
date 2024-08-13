@@ -14,13 +14,14 @@
         <% if (user.membership_id === 1) { %>
 
         <p>Thank you for signing up!</p>
+        <p>You're now an <strong>initiate</strong> member.</p>
         <p>
-          You're now an initiate member. You're still not allowed to write
-          messages, or see who wrote what.
+          You're still not allowed to write messages, or see who wrote what.
         </p>
         <p>To increase your membership level, you have to prove your worth.</p>
+        <br />
         <a href="/riddle">Click here to prove you're a worthy member</a>
-
+        <br />
         <p>Click <a href="/log-out">here</a> to logout.</p>
         <% } else if (user.membership_id >= 2) { %>
 
