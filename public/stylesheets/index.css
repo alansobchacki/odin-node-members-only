@@ -3,14 +3,14 @@ body {
   padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: rgb(230, 230, 230);
-  min-height: 100vh;
+  min-height: 90vh;
 }
 
 #index-main-container {
   display: flex;
   flex-direction: row-reverse;
   background-color: white;
-  min-height: 100vh;
+  min-height: 93vh;
   margin: 20px;
   margin-left: 30px;
   border-radius: 10px;
@@ -36,15 +36,12 @@ body {
 #right-container h2,
 #right-container p,
 #right-container label {
-  color: white;
+  color: rgb(218, 218, 218);
+  margin: 1%;
 }
 
-#left-container {
-  min-width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+#right-container a {
+  color: white;
 }
 
 #login-form {
@@ -55,10 +52,22 @@ body {
   margin-bottom: 2%;
 }
 
+#right-container h2,
+#right-container h1 {
+  margin-bottom: 20px;
+}
+
 #login-form input {
   padding: 10px;
   border-radius: 6px;
   border: none;
+  width: 210px;
+  outline: none;
+}
+
+#login-form input:focus {
+  outline: 2px solid #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 #login-button {
@@ -68,6 +77,23 @@ body {
   color: white;
   padding: 15px;
   margin: 10px;
-  width: 100px;
+  width: 120px;
   cursor: pointer;
+}
+
+#left-container {
+  min-width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.message-box {
+  background-color: rgb(238, 238, 238);
+  min-width: 90%;
+  margin: 10px;
+  padding: 5px;
+  padding-left: 10px;
+  border-radius: 10px;
 }
