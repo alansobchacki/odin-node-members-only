@@ -24,19 +24,21 @@
         <p>Click <a href="/log-out">here</a> to logout.</p>
         <% } else if (user.membership_id >= 2) { %>
 
-        <p>Want to leave a message?</p>
+        <p>Want to leave a message? Just write it and send it!</p>
+        <br />
 
         <form action="/" method="POST">
-          <input type="hidden" name="username" value="<%= user.username %>" />
+          <div id="message-form">
+            <input type="hidden" name="username" value="<%= user.username %>" />
 
-          <label for="message">Your message here</label>
-          <input
-            id="message"
-            name="message"
-            placeholder="Your message here..."
-            type="text"
-          />
-          <button>Send Message</button>
+            <input
+              id="message"
+              name="message"
+              placeholder="Your message here..."
+              type="text"
+            />
+            <button>Send Message</button>
+          </div>
         </form>
 
         <p>Click <a href="/log-out">here</a> to logout.</p>
@@ -93,12 +95,21 @@
             method="POST"
             style="display: inline"
           >
-            <button
-              type="submit"
-              style="border: none; background: none; cursor: pointer"
-            >
-              🗑️
-            </button>
+            <div class="button-container">
+              <button
+                class="delete-button"
+                type="submit"
+                style="border: none; background: none; cursor: pointer"
+              >
+                🗑️
+              </button>
+              <p>
+                <i
+                  >You're an admin. Click on the trash can emoji to delete this
+                  message.</i
+                >
+              </p>
+            </div>
           </form>
           <% } %>
         </div>

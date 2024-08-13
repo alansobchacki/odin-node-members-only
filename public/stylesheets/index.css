@@ -6,6 +6,30 @@ body {
   min-height: 90vh;
 }
 
+input {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  width: 210px;
+  outline: none;
+}
+
+input:focus {
+  outline: 2px solid #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+button {
+  background-color: transparent;
+  border: solid 2px white;
+  border-radius: 6px;
+  color: white;
+  padding: 15px;
+  margin: 10px;
+  width: 120px;
+  cursor: pointer;
+}
+
 #index-main-container {
   display: flex;
   flex-direction: row-reverse;
@@ -57,36 +81,23 @@ body {
   margin-bottom: 20px;
 }
 
-#login-form input {
-  padding: 10px;
-  border-radius: 6px;
-  border: none;
-  width: 210px;
-  outline: none;
-}
-
-#login-form input:focus {
-  outline: 2px solid #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-#login-button {
-  background-color: transparent;
-  border: solid 2px white;
-  border-radius: 6px;
-  color: white;
-  padding: 15px;
-  margin: 10px;
-  width: 120px;
-  cursor: pointer;
-}
-
 #left-container {
   min-width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.delete-button {
+  margin: 0;
+  padding: 1px;
+  width: 40px;
 }
 
 .message-box {
@@ -96,4 +107,12 @@ body {
   padding: 5px;
   padding-left: 10px;
   border-radius: 10px;
+}
+
+#message-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 2%;
 }
