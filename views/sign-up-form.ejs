@@ -2,22 +2,29 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title></title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/sign-up.css" />
+    <title>Super Secret Message Club - Sign Up</title>
   </head>
   <body>
-    <h1>Sign Up</h1>
-    <form action="/sign-up" method="POST">
-      <label for="firstName">First Name*</label>
-      <input id="firstName" name="firstName" type="text" />
-      <label for="lastName">Last Name*</label>
-      <input id="lastName" name="lastName" type="text" />
-      <label for="userName">Username</label>
-      <input id="userName" name="userName" placeholder="username" type="text" />
-      <label for="password">Password</label>
-      <input id="password" name="password" type="password" />
-      <label for="email">Email*</label>
-      <input id="email" name="email" type="email" />
-      <button>Sign Up</button>
-    </form>
+    <div id="sign-up-main-container">
+      <h1>Sign Up</h1>
+      <form action="/sign-up" method="POST">
+        <div id="sign-up-form">
+          <label for="firstName">First Name *</label>
+          <input id="firstName" name="firstName" type="text" required />
+          <label for="lastName">Last Name *</label>
+          <input id="lastName" name="lastName" type="text" required />
+          <label for="userName">Username *</label>
+          <input id="userName" name="userName" type="text" required />
+          <label for="password">Password *</label>
+          <input id="password" name="password" type="password" required />
+          <label for="email">Email *</label>
+          <input id="email" name="email" type="email" required />
+          <button>Sign Up</button>
+        </div>
+      </form>
+
+      <p>Click <a href="/">here</a> to return.</p>
+    </div>
   </body>
 </html>
