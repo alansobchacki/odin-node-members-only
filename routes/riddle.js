@@ -18,13 +18,15 @@ router.patch("/", async function (req, res, next) {
     const username = req.body.username;
     const answer = req.body.answer.toUpperCase();
 
-    if (answer === process.env.RIDDLE_PASSWORD)
+    if (answer === process.env.RIDDLE_PASSWORD) {
       await db.changeUserMembership(username, "member");
-
-    if (answer === process.env.RIDDLE_ADMIN_PASSWORD)
+      res.redirect("/");
+    } else if (answer === process.env.RIDDLE_ADMIN_PASSWORD) {
       await db.changeUserMembership(username, "admin");
-
-    res.redirect("/");
+      res.redirect("/");
+    } else {
+      res.redirect("/riddle?message=Wrong!%20Try%20again?&correct=false");
+    }
   } catch (err) {
     return next(err);
   }

@@ -12,9 +12,15 @@
         <h1>Welcome, <%= user.username %></h1>
 
         <% if (user.membership_id === 1) { %>
+        <p>You're an <strong>initiate</strong> member.</p>
 
-        <p>Thank you for signing up!</p>
-        <p>You're now an <strong>initiate</strong> member.</p>
+        <% } %> <% if (user.membership_id === 2) { %>
+        <p>You're a <strong>regular</strong> member.</p>
+
+        <% } %> <% if (user.membership_id === 3) { %>
+        <p>You're an <strong>admin</strong>.</p>
+
+        <% } %> <% if (user.membership_id === 1) { %>
         <p>
           You're still not allowed to write messages, or see who wrote what.
         </p>

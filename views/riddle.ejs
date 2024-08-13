@@ -3,29 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/riddle.css" />
+    <title>Super Secret Message Club</title>
   </head>
   <body>
     <div id="riddle-main-container">
       <% if (user) { %>
-      <p>Answer this, and improve your membership status.</p>
+      <script>
+        const params = new URLSearchParams(window.location.search);
+        const message = params.get("message");
+        const correct = params.get("correct");
+
+        if (message) {
+          alert(message);
+          if (correct === "true") {
+            window.location.href = "/";
+          }
+        }
+      </script>
+
+      <p>Answer this correctly, and improve your membership status.</p>
       <p>
         "I am not alive, but I grow; I don't have lungs, yet I need air; I have
         no mouth, and I can drown. What am I?"
       </p>
 
       <form method="POST" action="/riddle?_method=PATCH">
-        <input type="hidden" name="username" value="<%= user.username %>" />
+        <div id="riddle-form">
+          <input type="hidden" name="username" value="<%= user.username %>" />
 
-        <label for="answer">Your answer:</label>
-        <input
-          id="answer"
-          name="answer"
-          type="text"
-          placeholder="..."
-          required
-        />
-        <button type="submit">Submit</button>
+          <label for="answer">Your answer:</label>
+          <input
+            id="answer"
+            name="answer"
+            type="text"
+            placeholder="..."
+            required
+          />
+          <button type="submit">Submit</button>
+        </div>
       </form>
 
       <p>Click <a href="/">here</a> to return.</p>
